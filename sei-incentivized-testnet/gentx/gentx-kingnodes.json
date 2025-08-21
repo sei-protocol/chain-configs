@@ -1,0 +1,61 @@
+{
+  "body": {
+    "messages": [
+      {
+        "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
+        "description": {
+          "moniker": "kingnodes",
+          "identity": "",
+          "website": "http://kingnodes.com",
+          "security_contact": "security@kingnodes.com",
+          "details": "The kingnodes validator"
+        },
+        "commission": {
+          "rate": "0.050000000000000000",
+          "max_rate": "0.200000000000000000",
+          "max_change_rate": "0.200000000000000000"
+        },
+        "min_self_delegation": "1",
+        "delegator_address": "sei19w2488ntfgpduzqq3sk4j5x387zynwkn7ap88v",
+        "validator_address": "seivaloper19w2488ntfgpduzqq3sk4j5x387zynwknqjsfxu",
+        "pubkey": {
+          "@type": "/cosmos.crypto.ed25519.PubKey",
+          "key": "hnAJcxcwRKTy+upvDboAnd4m3GyXbO+ZvUuQnEa3rvU="
+        },
+        "value": {
+          "denom": "usei",
+          "amount": "10000000"
+        }
+      }
+    ],
+    "memo": "f2545bf4fa936a4fe66d187799440ef803ec5d21@38.242.247.46:26656",
+    "timeout_height": "0",
+    "extension_options": [],
+    "non_critical_extension_options": []
+  },
+  "auth_info": {
+    "signer_infos": [
+      {
+        "public_key": {
+          "@type": "/cosmos.crypto.secp256k1.PubKey",
+          "key": "AhHs+4Sx10vIdWyHU0GU7Xn+ukDtNy0UeHdQ01jtOkKJ"
+        },
+        "mode_info": {
+          "single": {
+            "mode": "SIGN_MODE_DIRECT"
+          }
+        },
+        "sequence": "0"
+      }
+    ],
+    "fee": {
+      "amount": [],
+      "gas_limit": "200000",
+      "payer": "",
+      "granter": ""
+    }
+  },
+  "signatures": [
+    "XKJn61A9MKa32gd8usrwZFq7CYpxZbDFfPlHh7KCDvgbGNSWGRddMPzsjyN76oEVQD2zCr8GUm/G9yCB0v7vBw=="
+  ]
+}
