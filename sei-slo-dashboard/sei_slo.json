@@ -918,7 +918,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "max by (moniker, pubkey_hash) (validator_propose_latency)",
+          "expr": "max by (moniker, pubkey_hash) (validator_propose_latency{chain_id=~\"$chain_id\"})",
           "interval": "15m",
           "legendFormat": "{{moniker}}",
           "range": true,
@@ -1020,7 +1020,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "max by (moniker, address) (block_miss_percentage_sliding_window)",
+          "expr": "max by (moniker, address) (block_miss_percentage_sliding_window{chain_id=~\"$chain_id\"})",
           "interval": "15m",
           "legendFormat": "{{moniker}}",
           "range": true,
@@ -1122,7 +1122,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "max by (moniker) (cosmos_validators_jailed{component=\"$webapp_component\"}) > 0",
+          "expr": "max by (moniker) (cosmos_validators_jailed{chain_id=~\"$chain_id\", component=\"$webapp_component\"}) > 0",
           "interval": "15m",
           "legendFormat": "{{moniker}}",
           "range": true,
