@@ -1335,7 +1335,7 @@
         "type": "prometheus",
         "uid": "$datasource"
       },
-      "description": "1.0 = 100% of the time the validator is missing more than 70% of the blocks in the time period",
+      "description": "1.0 = 100% of the time the validator missed less than 70% of blocks in the time period",
       "fieldConfig": {
         "defaults": {
           "color": {
