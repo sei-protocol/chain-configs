@@ -1,0 +1,22 @@
+{
+    "title": "Change oracle whitelist",
+    "description": "Change oracle whitelist to include atom, sei, osmo",
+    "changes": [
+        {
+        "subspace": "oracle",
+        "key": "Whitelist",
+        "value":
+        [
+            { "name": "uatom" },
+            { "name": "usei" },
+            { "name": "ueth" },
+            { "name": "ubtc" },
+            { "name": "uosmo" },
+            { "name": "uusdt" },
+            { "name": "uusdc" }
+        ]
+        }
+    ],
+    "deposit": "7000000000usei",
+    "is_expedited": true
+}

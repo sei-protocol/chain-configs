@@ -1,0 +1,65 @@
+groups:
+  - name: sei-slo-chain
+    rules:
+      - record: blocks_per_second
+        expr: max by (chain_id, component) (rate(tendermint_consensus_latest_block_height[5m]))
+
+      - record: slo_consensus_block_speed_30d
+        expr: sum by (chain_id, component) (rate(tendermint_consensus_block_interval_seconds_bucket{le="1"}[30d])) / on (chain_id, component) group_left sum by (chain_id, component) (rate(tendermint_consensus_block_interval_seconds_count[30d]))
+      - record: slo_consensus_block_speed_14d
+        expr: sum by (chain_id, component) (rate(tendermint_consensus_block_interval_seconds_bucket{le="1"}[14d])) / on (chain_id, component) group_left sum by (chain_id, component) (rate(tendermint_consensus_block_interval_seconds_count[14d]))
+      - record: slo_consensus_block_speed_7d
+        expr: sum by (chain_id, component) (rate(tendermint_consensus_block_interval_seconds_bucket{le="1"}[7d])) / on (chain_id, component) group_left sum by (chain_id, component) (rate(tendermint_consensus_block_interval_seconds_count[7d]))
+      - record: slo_consensus_block_speed_24h
+        expr: sum by (chain_id, component) (rate(tendermint_consensus_block_interval_seconds_bucket{le="1"}[24h])) / on (chain_id, component) group_left sum by (chain_id, component) (rate(tendermint_consensus_block_interval_seconds_count[24h]))
+      - record: slo_consensus_block_speed_12h
+        expr: sum by (chain_id, component) (rate(tendermint_consensus_block_interval_seconds_bucket{le="1"}[12h])) / on (chain_id, component) group_left sum by (chain_id, component) (rate(tendermint_consensus_block_interval_seconds_count[12h]))
+      - record: slo_consensus_block_speed_6h
+        expr: sum by (chain_id, component) (rate(tendermint_consensus_block_interval_seconds_bucket{le="1"}[6h])) / on (chain_id, component) group_left sum by (chain_id, component) (rate(tendermint_consensus_block_interval_seconds_count[6h]))
+      - record: slo_consensus_block_speed_1h
+        expr: sum by (chain_id, component) (rate(tendermint_consensus_block_interval_seconds_bucket{le="1"}[1h])) / on (chain_id, component) group_left sum by (chain_id, component) (rate(tendermint_consensus_block_interval_seconds_count[1h]))
+      - record: slo_consensus_block_speed_30m
+        expr: sum by (chain_id, component) (rate(tendermint_consensus_block_interval_seconds_bucket{le="1"}[30m])) / on (chain_id, component) group_left sum by (chain_id, component) (rate(tendermint_consensus_block_interval_seconds_count[30m]))
+      - record: slo_consensus_block_speed_5m
+        expr: sum by (chain_id, component) (rate(tendermint_consensus_block_interval_seconds_bucket{le="1"}[5m])) / on (chain_id, component) group_left sum by (chain_id, component) (rate(tendermint_consensus_block_interval_seconds_count[5m]))
+
+      - record: slo_blocks_per_second_30d
+        expr: sum by (chain_id, component) (sum_over_time((blocks_per_second > bool 1)[30d:])) / ignoring(chain_id, component) group_left() sum_over_time((vector(1)[30d:]))
+      - record: slo_blocks_per_second_14d
+        expr: sum by (chain_id, component) (sum_over_time((blocks_per_second > bool 1)[14d:])) / ignoring(chain_id, component) group_left() sum_over_time((vector(1)[14d:]))
+      - record: slo_blocks_per_second_7d
+        expr: sum by (chain_id, component) (sum_over_time((blocks_per_second > bool 1)[7d:])) / ignoring(chain_id, component) group_left() sum_over_time((vector(1)[7d:]))
+      - record: slo_blocks_per_second_24h
+        expr: sum by (chain_id, component) (sum_over_time((blocks_per_second > bool 1)[24h:])) / ignoring(chain_id, component) group_left() sum_over_time((vector(1)[24h:]))
+      - record: slo_blocks_per_second_12h
+        expr: sum by (chain_id, component) (sum_over_time((blocks_per_second > bool 1)[12h:])) / ignoring(chain_id, component) group_left() sum_over_time((vector(1)[12h:]))
+      - record: slo_blocks_per_second_6h
+        expr: sum by (chain_id, component) (sum_over_time((blocks_per_second > bool 1)[6h:])) / ignoring(chain_id, component) group_left() sum_over_time((vector(1)[6h:]))
+      - record: slo_blocks_per_second_1h
+        expr: sum by (chain_id, component) (sum_over_time((blocks_per_second > bool 1)[1h:])) / ignoring(chain_id, component) group_left() sum_over_time((vector(1)[1h:]))
+      - record: slo_blocks_per_second_30m
+        expr: sum by (chain_id, component) (sum_over_time((blocks_per_second > bool 1)[30m:])) / ignoring(chain_id, component) group_left() sum_over_time((vector(1)[30m:]))
+      - record: slo_blocks_per_second_5m
+        expr: sum by (chain_id, component) (sum_over_time((blocks_per_second > bool 1)[5m:])) / ignoring(chain_id, component) group_left() sum_over_time((vector(1)[5m:]))
+
+  - name: sei-slo-validator
+    rules:
+      - record: block_miss_percentage_sliding_window
+        expr: max by (moniker, chain_id, address) (cosmos_validators_missed_blocks{component="validators"}) / ignoring(moniker, address) group_left() max by (chain_id) (cosmos_params_signed_blocks_window{component="validators"})
+
+      - record: validator_propose_latency
+        expr: max by (chain_id, moniker, pubkey_hash) (cosmos_validators_active{component="webapp"}) * 0 + on(chain_id, pubkey_hash) group_left() max by(pubkey_hash, chain_id) (histogram_quantile(0.75, label_replace(tendermint_consensus_propose_latency_bucket{component="webapp"}, "pubkey_hash", "$1", "proposer_address", "(.+)")))
+
+      - record: slo_block_miss_7d
+        expr: sum by (chain_id, moniker, address) (sum_over_time((block_miss_percentage_sliding_window < bool 0.70)[7d:])) / ignoring(chain_id, moniker, address) group_left() sum_over_time((vector(1)[7d:]))
+      - record: slo_block_miss_24h
+        expr: sum by (chain_id, moniker, address) (sum_over_time((block_miss_percentage_sliding_window < bool 0.70)[24h:])) / ignoring(chain_id, moniker, address) group_left() sum_over_time((vector(1)[24h:]))
+      - record: slo_block_miss_1h
+        expr: sum by (chain_id, moniker, address) (sum_over_time((block_miss_percentage_sliding_window < bool 0.70)[1h:])) / ignoring(chain_id, moniker, address) group_left() sum_over_time((vector(1)[1h:]))
+
+      - record: slo_validator_proposal_latency_7d
+        expr: sum by (chain_id, moniker, pubkey_hash) (sum_over_time((validator_propose_latency < bool 0.5)[7d:])) / ignoring(chain_id, moniker, pubkey_hash) group_left() sum_over_time((vector(1)[7d:]))
+      - record: slo_validator_proposal_latency_24h
+        expr: sum by (chain_id, moniker, pubkey_hash) (sum_over_time((validator_propose_latency < bool 0.5)[24h:])) / ignoring(chain_id, moniker, pubkey_hash) group_left() sum_over_time((vector(1)[24h:]))
+      - record: slo_validator_proposal_latency_1h
+        expr: sum by (chain_id, moniker, pubkey_hash) (sum_over_time((validator_propose_latency < bool 0.5)[1h:])) / ignoring(chain_id, moniker, pubkey_hash) group_left() sum_over_time((vector(1)[1h:]))

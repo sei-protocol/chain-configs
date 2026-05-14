@@ -1,0 +1,18 @@
+{
+    "title": "Change oracle params to require uptime",
+    "description": "Change oracle slashing uptime and vote threshold",
+    "changes": [
+      {
+        "subspace": "oracle",
+        "key": "MinValidPerWindow",
+        "value": "0.05"
+      },
+      {
+        "subspace": "oracle",
+        "key": "VoteThreshold",
+        "value": "0.667"
+      }
+    ],
+    "deposit": "10sei",
+    "is_expedited": true
+  }
