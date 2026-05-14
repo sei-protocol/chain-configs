@@ -1,0 +1,12 @@
+{
+    "title": "Increase validator set to 40",
+    "description": "Increases the validator set to 40.",
+    "changes": [
+      {
+        "subspace": "staking",
+        "key": "MaxValidators",
+        "value":  40
+      }
+    ],
+    "deposit": "20000000usei"
+}
