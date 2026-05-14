@@ -814,404 +814,12 @@
       "type": "bargauge"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "$datasource"
-      },
-      "description": "1.0 = 60% of blocks updates the price for the denom",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "continuous-BlPu"
-          },
-          "custom": {
-            "align": "auto",
-            "cellOptions": {
-              "type": "auto"
-            },
-            "inspect": false
-          },
-          "mappings": [],
-          "max": 1,
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green"
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "percentunit"
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byRegexp",
-              "options": "chain_id.*"
-            },
-            "properties": [
-              {
-                "id": "custom.hidden",
-                "value": true
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Time"
-            },
-            "properties": [
-              {
-                "id": "custom.hidden",
-                "value": true
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "__name__"
-            },
-            "properties": [
-              {
-                "id": "custom.hidden",
-                "value": true
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Value #5m"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "5 mins"
-              },
-              {
-                "id": "custom.cellOptions",
-                "value": {
-                  "mode": "gradient",
-                  "type": "gauge"
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Value #30m"
-            },
-            "properties": [
-              {
-                "id": "custom.cellOptions",
-                "value": {
-                  "mode": "gradient",
-                  "type": "gauge"
-                }
-              },
-              {
-                "id": "displayName",
-                "value": "30 mins"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Value #1h"
-            },
-            "properties": [
-              {
-                "id": "custom.cellOptions",
-                "value": {
-                  "mode": "gradient",
-                  "type": "gauge"
-                }
-              },
-              {
-                "id": "displayName",
-                "value": "1 hour"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Value #12h"
-            },
-            "properties": [
-              {
-                "id": "custom.cellOptions",
-                "value": {
-                  "mode": "gradient",
-                  "type": "gauge"
-                }
-              },
-              {
-                "id": "displayName",
-                "value": "12 hours"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Value #24h"
-            },
-            "properties": [
-              {
-                "id": "custom.cellOptions",
-                "value": {
-                  "mode": "gradient",
-                  "type": "gauge"
-                }
-              },
-              {
-                "id": "displayName",
-                "value": "24 hours"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Value #14d"
-            },
-            "properties": [
-              {
-                "id": "custom.cellOptions",
-                "value": {
-                  "mode": "gradient",
-                  "type": "gauge"
-                }
-              },
-              {
-                "id": "displayName",
-                "value": "14 days"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Value #30d"
-            },
-            "properties": [
-              {
-                "id": "custom.cellOptions",
-                "value": {
-                  "mode": "gradient",
-                  "type": "gauge"
-                }
-              },
-              {
-                "id": "displayName",
-                "value": "30 days"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Value #7d"
-            },
-            "properties": [
-              {
-                "id": "custom.cellOptions",
-                "value": {
-                  "mode": "gradient",
-                  "type": "gauge"
-                }
-              },
-              {
-                "id": "displayName",
-                "value": "7 days"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "component"
-            },
-            "properties": [
-              {
-                "id": "custom.hidden",
-                "value": true
-              }
-            ]
-          }
-        ]
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 24,
-        "x": 0,
-        "y": 21
-      },
-      "id": 20,
-      "options": {
-        "cellHeight": "sm",
-        "footer": {
-          "countRows": false,
-          "fields": "",
-          "reducer": [
-            "sum"
-          ],
-          "show": false
-        },
-        "showHeader": true,
-        "sortBy": []
-      },
-      "pluginVersion": "12.0.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "$datasource"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "max by (denom) (slo_price_update_5m{chain_id=~\"$chain_id\"})",
-          "format": "table",
-          "instant": true,
-          "legendFormat": "5min",
-          "range": false,
-          "refId": "5m"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "$datasource"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "max by (denom) (slo_price_update_30m{chain_id=~\"$chain_id\"})",
-          "format": "table",
-          "hide": false,
-          "instant": true,
-          "legendFormat": "30m",
-          "range": false,
-          "refId": "30m"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "$datasource"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "max by (denom) (slo_price_update_1h{chain_id=~\"$chain_id\"})",
-          "format": "table",
-          "hide": false,
-          "instant": true,
-          "legendFormat": "1h",
-          "range": false,
-          "refId": "1h"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "$datasource"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "max by (denom) (slo_price_update_12h{chain_id=~\"$chain_id\"})",
-          "format": "table",
-          "hide": false,
-          "instant": true,
-          "legendFormat": "12h",
-          "range": false,
-          "refId": "12h"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "$datasource"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "slo_price_update_24h{chain_id=~\"$chain_id\"}",
-          "format": "table",
-          "hide": false,
-          "instant": true,
-          "legendFormat": "24h",
-          "range": false,
-          "refId": "24h"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "$datasource"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "slo_price_update_7d{chain_id=~\"$chain_id\"}",
-          "format": "table",
-          "hide": false,
-          "instant": true,
-          "legendFormat": "__auto",
-          "range": false,
-          "refId": "7d"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "$datasource"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "slo_price_update_14d{chain_id=~\"$chain_id\"}",
-          "format": "table",
-          "hide": false,
-          "instant": true,
-          "legendFormat": "14d",
-          "range": false,
-          "refId": "14d"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "$datasource"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "slo_price_update_30d{chain_id=~\"$chain_id\"}",
-          "format": "table",
-          "hide": false,
-          "instant": true,
-          "legendFormat": "30d",
-          "range": false,
-          "refId": "30d"
-        }
-      ],
-      "title": "Price Update SLO ",
-      "transformations": [
-        {
-          "id": "joinByField",
-          "options": {
-            "byField": "denom",
-            "mode": "outer"
-          }
-        }
-      ],
-      "type": "table"
-    },
-    {
       "collapsed": false,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 29
+        "y": 21
       },
       "id": 23,
       "panels": [],
@@ -1283,7 +891,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 30
+        "y": 22
       },
       "id": 24,
       "options": {
@@ -1385,7 +993,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 30
+        "y": 22
       },
       "id": 25,
       "options": {
@@ -1487,7 +1095,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 38
+        "y": 30
       },
       "id": 27,
       "options": {
@@ -1530,7 +1138,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 46
+        "y": 38
       },
       "id": 6,
       "panels": [],
@@ -1648,7 +1256,7 @@
         "h": 11,
         "w": 12,
         "x": 0,
-        "y": 47
+        "y": 39
       },
       "id": 13,
       "options": {
@@ -1833,7 +1441,7 @@
         "h": 11,
         "w": 12,
         "x": 12,
-        "y": 47
+        "y": 39
       },
       "id": 11,
       "options": {
