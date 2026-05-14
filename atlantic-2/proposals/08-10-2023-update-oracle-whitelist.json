@@ -1,0 +1,22 @@
+{
+    "title": "Change oracle whitelist",
+    "description": "Change oracle whitelist to add OSMO and USDT",
+    "changes": [
+      {
+        "subspace": "oracle",
+        "key": "Whitelist",
+        "value":
+        [
+            {"name":"uatom"},
+            {"name":"usei"},
+            {"name":"ueth"},
+            {"name":"ubtc"},
+            {"name":"factory/sei1jdppe6fnj2q7hjsepty5crxtrryzhuqsjrj95y/uust2"},
+            {"name": "uosmo"},
+            {"name": "uusdt"}
+        ]
+      }
+    ],
+    "deposit": "20sei",
+    "is_expedited": true
+  }

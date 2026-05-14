@@ -1,0 +1,23 @@
+{
+  "title": "Update Slashing Fraction Proposal",
+  "description": "This proposal aims to update the slashing fraction for both double sign and missing signatures to zero.",
+  "changes": [
+    {
+      "subspace": "slashing",
+      "key": "SlashFractionDoubleSign",
+      "value": "0"
+    },
+    {
+      "subspace": "slashing",
+      "key": "SlashFractionDowntime",
+      "value": "0"
+    },
+    {
+      "subspace": "oracle",
+      "key": "SlashFraction",
+      "value": "0"
+    }
+  ],
+  "deposit": "10000000usei"
+}
+
