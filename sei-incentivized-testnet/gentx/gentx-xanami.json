@@ -1,0 +1,61 @@
+{
+    "body": {
+        "messages": [
+            {
+                "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
+                "description": {
+                    "moniker": "xanami",
+                    "identity": "",
+                    "website": "https://twitter.com/h_haszan",
+                    "security_contact": "hasan.musana1112@gmail.com",
+                    "details": "Grow together to the future"
+                },
+                "commission": {
+                    "rate": "0.050000000000000000",
+                    "max_rate": "0.200000000000000000",
+                    "max_change_rate": "0.010000000000000000"
+                },
+                "min_self_delegation": "1",
+                "delegator_address": "sei19lzewtyc0jge8wxwze03x0ac9xt9luqs9zrtcz",
+                "validator_address": "seivaloper19lzewtyc0jge8wxwze03x0ac9xt9luqsmdj9ej",
+                "pubkey": {
+                    "@type": "/cosmos.crypto.ed25519.PubKey",
+                    "key": "tANWKzBHOzj88qKhdy3LPZHPM8QQi8c8ONSv521zcBw="
+                },
+                "value": {
+                    "denom": "usei",
+                    "amount": "10000000"
+                }
+            }
+        ],
+        "memo": "f6b461e84f545413902260f12ca002eeab07a5b1@10.1.0.4:26656",
+        "timeout_height": "0",
+        "extension_options": [],
+        "non_critical_extension_options": []
+    },
+    "auth_info": {
+        "signer_infos": [
+            {
+                "public_key": {
+                    "@type": "/cosmos.crypto.secp256k1.PubKey",
+                    "key": "AsndazaVbpRparaSPqc7WtS1Hct8dUN9zVTfDgkUe7ge"
+                },
+                "mode_info": {
+                    "single": {
+                        "mode": "SIGN_MODE_DIRECT"
+                    }
+                },
+                "sequence": "0"
+            }
+        ],
+        "fee": {
+            "amount": [],
+            "gas_limit": "200000",
+            "payer": "",
+            "granter": ""
+        }
+    },
+    "signatures": [
+        "ps8ETuTY2T6o02yjV2t9AIpMsTjA8Qz+/pYQI+x39Nxcj8mlYIlUxRiUspcZ7VumvZnEVjBQETgbItV/DjRaJA=="
+    ]
+}
