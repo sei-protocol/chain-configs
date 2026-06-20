@@ -1,0 +1,8 @@
+seid gentx hoanganh 10000000usei \
+> --chain-id atlantic-1 \
+> --commission-rate=0.05 \
+> --commission-max-rate=0.2 \
+> --commission-max-change-rate=0.1 \
+> --pubkey $(seid tendermint show-validator) \
+> --details="From MiGoi with love" \
+> --moniker hoanganhnode
