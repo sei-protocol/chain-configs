@@ -1,0 +1,1 @@
+{"body":{"messages":[{"@type":"/cosmos.staking.v1beta1.MsgCreateValidator","description":{"moniker":"rapscrypto","identity":"","website":"https://twitter.com/rapscrypto","security_contact"
