@@ -430,7 +430,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "max(rate(sei_cosmos_throughput_transaction_count{chain_id=~\"$chain_id\", component=\"$validator_component\", mode=\"deliver\"}[5m]))",
+          "expr": "max(rate(sei_chain_tx_duration_seconds_count{chain_id=~\"$chain_id\", component=\"$validator_component\", mode=\"deliver\"}[5m]))",
           "hide": false,
           "legendFormat": "Transactions per sec",
           "range": true,
@@ -442,7 +442,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "max(rate(sei_cosmos_throughput_message_count{chain_id=~\"$chain_id\", component=\"$validator_component\"}[5m]))",
+          "expr": "max(sum without (type) (rate(sei_chain_run_msg_latency_seconds_count{chain_id=~\"$chain_id\", component=\"$validator_component\"}[5m])))",
           "hide": false,
           "legendFormat": "Messages Per Sec",
           "range": true,
@@ -831,7 +831,7 @@
         "type": "prometheus",
         "uid": "$datasource"
       },
-      "description": "Raw metrics for validator proposal latency (in seconds)\n\nTendermint Metric:\ntendermint_consensus_propose_latency_bucket\n\nrecord:validator_propose_latency\nexpr:max by (chain_id, moniker, pubkey_hash) (cosmos_validators_active{component=\"$validator_component\"} > 0) * 0 + on (chain_id, pubkey_hash) group_left () max by (pubkey_hash, chain_id) (histogram_quantile(0.75, label_replace(tendermint_consensus_propose_latency_bucket{component=\"$validator_component\"}, \"pubkey_hash\", \"$1\", \"proposer_address\", \"(.+)\")))",
+      "description": "Raw metrics for validator proposal latency (in seconds)\n\nTendermint Metric:\ntendermint_consensus_propose_latency_bucket\n\nrecord:validator_propose_latency\nexpr:(max by (chain_id, moniker, pubkey_hash) (sei_chain_cosmos_validators_active{component=~\"$cosmos_component\"}) or max by (chain_id, moniker, pubkey_hash) (cosmos_validators_active{component=\"$webapp_component\"})) * 0 + on (chain_id, pubkey_hash) group_left () max by (pubkey_hash, chain_id) (histogram_quantile(0.75, label_replace(tendermint_consensus_propose_latency_bucket{component=\"$validator_component\"}, \"pubkey_hash\", \"$1\", \"proposer_address\", \"(.+)\")))",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -933,7 +933,7 @@
         "type": "prometheus",
         "uid": "$datasource"
       },
-      "description": "> 95% to get jailed\n\n\nrecord:block_miss_percentage_sliding_window\nexpr:max by (moniker, chain_id, address) (cosmos_validators_missed_blocks{component=\"$validator_component\"}) / ignoring (moniker, address) group_left () max by (chain_id) (cosmos_params_signed_blocks_window{component=\"$validator_component\"})\nCosmos Level Metrics:\ncosmos_validators_missed_blocks",
+      "description": "> 95% to get jailed\n\n\nrecord:block_miss_percentage_sliding_window\nexpr:(max by (moniker, chain_id, address) (sei_chain_cosmos_validators_missed_blocks{component=~\"$cosmos_component\"}) or max by (moniker, chain_id, address) (cosmos_validators_missed_blocks{component=\"$validator_component\"})) / ignoring (moniker, address) group_left () (max by (chain_id) (sei_chain_cosmos_params_signed_blocks_window{component=~\"$cosmos_component\"}) or max by (chain_id) (cosmos_params_signed_blocks_window{component=\"$validator_component\"}))\nCosmos Level Metrics:\nsei_chain_cosmos_validators_missed_blocks",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1122,7 +1122,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "max by (moniker) (cosmos_validators_jailed{chain_id=~\"$chain_id\", component=\"$webapp_component\"}) > 0",
+          "expr": "(max by (moniker) (sei_chain_cosmos_validators_jailed{chain_id=~\"$chain_id\", component=~\"$cosmos_component\"}) or max by (moniker) (cosmos_validators_jailed{chain_id=~\"$chain_id\", component=\"$webapp_component\"})) > 0",
           "interval": "15m",
           "legendFormat": "{{moniker}}",
           "range": true,
@@ -1584,6 +1584,29 @@
           }
         ],
         "query": "webapp",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": "validators|node",
+          "value": "validators|node"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "Native cosmos metrics component regex",
+        "multi": false,
+        "name": "cosmos_component",
+        "options": [
+          {
+            "selected": true,
+            "text": "validators|node",
+            "value": "validators|node"
+          }
+        ],
+        "query": "validators|node",
         "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
