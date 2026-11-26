@@ -1,0 +1,13 @@
+{
+    "title": "Change Signed Blocks Window to 12 hours",
+    "description": "Change slashing window to roughly 12 hours based on 0.4s block times",
+    "changes": [
+      {
+        "subspace": "slashing",
+        "key": "SignedBlocksWindow",
+        "value": "108000"
+      }
+    ],
+    "deposit": "10000000usei",
+    "is_expedited": true
+  }

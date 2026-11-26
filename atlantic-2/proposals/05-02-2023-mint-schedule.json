@@ -1,0 +1,22 @@
+{
+  "title": "Mint Param Change Proposal",
+  "description": "Proposal to add Daily Mint Token Release Schedule",
+  "changes": [
+    {
+      "subspace": "mint",
+      "key": "TokenReleaseSchedule",
+      "value": [
+        {
+          "token_release_amount": "100000000000",
+          "start_date": "2023-05-02",
+          "end_date": "2023-05-05"
+        },
+        {
+          "token_release_amount": "8888888888",
+          "start_date": "2023-05-10",
+          "end_date": "2025-05-03"
+        }
+      ]
+    }
+  ]
+}
