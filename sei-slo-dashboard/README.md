@@ -31,20 +31,22 @@ Set `PORT=...` to use a different local port, or `KEEP_RUNNING=0` to stop Grafan
 
 ## Required Prometheus Data
 
-The dashboard expects these raw metrics:
+The dashboard expects these raw metrics, all served by seid on its Prometheus endpoint (`:26660/metrics` by default):
 
 - `tendermint_consensus_latest_block_height`
 - `tendermint_consensus_block_interval_seconds_bucket`
 - `tendermint_consensus_block_interval_seconds_count`
-- `sei_cosmos_throughput_transaction_count`
-- `sei_cosmos_throughput_message_count`
-- `cosmos_validators_missed_blocks`
-- `cosmos_params_signed_blocks_window`
-- `cosmos_validators_active`
 - `tendermint_consensus_propose_latency_bucket`
-- `cosmos_validators_jailed`
+- `sei_chain_tx_duration_seconds_count`
+- `sei_chain_run_msg_latency_seconds_count`
+- `sei_chain_cosmos_validators_missed_blocks`
+- `sei_chain_cosmos_params_signed_blocks_window`
+- `sei_chain_cosmos_validators_active`
+- `sei_chain_cosmos_validators_jailed`
 
-The useful labels are `chain_id`, `component`, `moniker`, `address`, `pubkey_hash`, `proposer_address`, and `mode`. If your exporters use different label names or component values, update `recording_rules.yaml` and the matching Grafana variables.
+The `sei_chain_cosmos_*` series are reported by seid itself from v6.8.0, but only when the `[cosmos_metrics]` section of `app.toml` has `enabled = true`; it is off by default. Enable it on the nodes behind the `validators` and `webapp` components. Nodes on an older release, or with the section off, can keep running the external `sei-cosmos-exporter`: the validator rules and the jailed panel fall back to its unprefixed `cosmos_*` names when a node reports no native series.
+
+The useful labels are `chain_id`, `component`, `moniker`, `address`, `pubkey_hash`, `proposer_address`, and `mode`. seid adds `chain_id` to its `sei_chain_*` series itself. If your scrape jobs use different label names or component values, update `recording_rules.yaml` and the matching Grafana variables.
 
 ## Recording Rules
 

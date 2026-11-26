@@ -430,7 +430,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "max(rate(sei_cosmos_throughput_transaction_count{chain_id=~\"$chain_id\", component=\"$validator_component\", mode=\"deliver\"}[5m]))",
+          "expr": "max(rate(sei_chain_tx_duration_seconds_count{chain_id=~\"$chain_id\", component=\"$validator_component\", mode=\"deliver\"}[5m]))",
           "hide": false,
           "legendFormat": "Transactions per sec",
           "range": true,
@@ -442,7 +442,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "max(rate(sei_cosmos_throughput_message_count{chain_id=~\"$chain_id\", component=\"$validator_component\"}[5m]))",
+          "expr": "max(sum without (type) (rate(sei_chain_run_msg_latency_seconds_count{chain_id=~\"$chain_id\", component=\"$validator_component\"}[5m])))",
           "hide": false,
           "legendFormat": "Messages Per Sec",
           "range": true,
@@ -1122,7 +1122,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "max by (moniker) (cosmos_validators_jailed{chain_id=~\"$chain_id\", component=\"$webapp_component\"}) > 0",
+          "expr": "(max by (moniker) (sei_chain_cosmos_validators_jailed{chain_id=~\"$chain_id\", component=\"$webapp_component\"}) or max by (moniker) (cosmos_validators_jailed{chain_id=~\"$chain_id\", component=\"$webapp_component\"})) > 0",
           "interval": "15m",
           "legendFormat": "{{moniker}}",
           "range": true,

@@ -45,10 +45,10 @@ groups:
   - name: sei-slo-validator
     rules:
       - record: block_miss_percentage_sliding_window
-        expr: max by (moniker, chain_id, address) (cosmos_validators_missed_blocks{component="validators"}) / ignoring(moniker, address) group_left() max by (chain_id) (cosmos_params_signed_blocks_window{component="validators"})
+        expr: (max by (moniker, chain_id, address) (sei_chain_cosmos_validators_missed_blocks{component="validators"}) or max by (moniker, chain_id, address) (cosmos_validators_missed_blocks{component="validators"})) / ignoring(moniker, address) group_left() (max by (chain_id) (sei_chain_cosmos_params_signed_blocks_window{component="validators"}) or max by (chain_id) (cosmos_params_signed_blocks_window{component="validators"}))
 
       - record: validator_propose_latency
-        expr: max by (chain_id, moniker, pubkey_hash) (cosmos_validators_active{component="webapp"}) * 0 + on(chain_id, pubkey_hash) group_left() max by(pubkey_hash, chain_id) (histogram_quantile(0.75, label_replace(tendermint_consensus_propose_latency_bucket{component="webapp"}, "pubkey_hash", "$1", "proposer_address", "(.+)")))
+        expr: (max by (chain_id, moniker, pubkey_hash) (sei_chain_cosmos_validators_active{component="webapp"}) or max by (chain_id, moniker, pubkey_hash) (cosmos_validators_active{component="webapp"})) * 0 + on(chain_id, pubkey_hash) group_left() max by(pubkey_hash, chain_id) (histogram_quantile(0.75, label_replace(tendermint_consensus_propose_latency_bucket{component="webapp"}, "pubkey_hash", "$1", "proposer_address", "(.+)")))
 
       - record: slo_block_miss_7d
         expr: sum by (chain_id, moniker, address) (sum_over_time((block_miss_percentage_sliding_window < bool 0.70)[7d:])) / ignoring(chain_id, moniker, address) group_left() sum_over_time((vector(1)[7d:]))
