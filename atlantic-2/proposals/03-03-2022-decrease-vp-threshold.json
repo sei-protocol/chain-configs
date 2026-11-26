@@ -1,0 +1,18 @@
+{
+    "title": "Change Max Voting PowerEnforcement",
+    "description": "Decrese threshold to start enforcing threshold soon",
+    "changes": [
+      {
+        "subspace": "staking",
+        "key": "MaxVotingPower",
+        "value": "0.15"
+      },
+      {
+        "subspace": "staking",
+        "key": "MaxVotingPowerEnforcementThreshold",
+        "value": "1000"
+      }
+    ],
+    "deposit": "10000000usei",
+    "is_expedited": true
+  }

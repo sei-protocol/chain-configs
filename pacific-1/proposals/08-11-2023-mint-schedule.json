@@ -1,0 +1,64 @@
+{
+  "title": "Mint Param Change Proposal",
+  "description": "Proposal to add Daily Mint Token Release Schedule",
+  "changes": [
+    {
+      "subspace": "mint",
+      "key": "TokenReleaseSchedule",
+      "value": [
+	    {
+	      "token_release_amount": "300000000000000",
+	      "start_date": "2023-08-15",
+	      "end_date": "2024-08-14"
+	    },
+	    {
+	      "token_release_amount": "225000000000000",
+	      "start_date": "2024-08-15",
+	      "end_date": "2025-08-14"
+	    },
+	    {
+	      "token_release_amount": "180000000000000",
+	      "start_date": "2025-08-15",
+	      "end_date": "2026-08-14"
+	    },
+	    {
+	      "token_release_amount": "165000000000000",
+	      "start_date": "2026-08-15",
+	      "end_date": "2027-08-14"
+	    },
+	    {
+	      "token_release_amount": "135000000000000",
+	      "start_date": "2027-08-15",
+	      "end_date": "2028-08-14"
+	    },
+	    {
+	      "token_release_amount": "120000000000000",
+	      "start_date": "2028-08-15",
+	      "end_date": "2029-08-14"
+	    },
+	    {
+	      "token_release_amount": "112500000000000",
+	      "start_date": "2029-08-15",
+	      "end_date": "2030-08-14"
+	    },
+	    {
+	      "token_release_amount": "112500000000000",
+	      "start_date": "2030-08-15",
+	      "end_date": "2031-08-14"
+	    },
+	    {
+	      "token_release_amount": "75000000000000",
+	      "start_date": "2031-08-15",
+	      "end_date": "2032-08-14"
+	    },
+	    {
+	      "token_release_amount": "75000000000000",
+	      "start_date": "2032-08-15",
+	      "end_date": "2033-08-14"
+	    }
+	]
+    }
+  ],
+ "deposit": "1000000000usei",
+ "is_expedited": true
+}

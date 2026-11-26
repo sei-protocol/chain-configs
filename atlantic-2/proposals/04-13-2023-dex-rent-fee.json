@@ -1,0 +1,23 @@
+{
+    "title": "Change default dex gas per order / cancel and sudo gas price",
+    "description": "Change default dex gas per order to 55000, per cancel to 53000 and sudo gas price to 0.01",
+    "changes": [
+      {
+        "subspace": "dex",
+        "key": "KeyDefaultGasPerOrder",
+        "value": "55000"
+      },
+      {
+        "subspace": "dex",
+        "key": "KeyDefaultGasPerCancel",
+        "value": "53000"
+      },
+      {
+        "subspace": "dex",
+        "key": "KeySudoCallGasPrice",
+        "value": "0.01"
+      }
+    ],
+    "deposit": "10000000usei",
+    "is_expedited": true
+  }

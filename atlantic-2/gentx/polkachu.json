@@ -1,0 +1,49 @@
+{
+  "body": {
+    "messages": [
+      {
+        "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
+        "description": {
+          "moniker": "polkachu.com",
+          "identity": "0A6AF02D1557E5B4",
+          "website": "https://polkachu.com",
+          "security_contact": "hello@polkachu.com",
+          "details": "Polkachu is the trusted staking service provider for blockchain projects. 100% refund for downtime slash. Contact us at hello@polkachu.com"
+        },
+        "commission": {
+          "rate": "0.050000000000000000",
+          "max_rate": "0.100000000000000000",
+          "max_change_rate": "0.050000000000000000"
+        },
+        "min_self_delegation": "1",
+        "delegator_address": "sei1qnn8rvtlfya3u4qvryqtjnc6gum4ltajj84uut",
+        "validator_address": "seivaloper1qnn8rvtlfya3u4qvryqtjnc6gum4ltajvgyjam",
+        "pubkey": {
+          "@type": "/cosmos.crypto.ed25519.PubKey",
+          "key": "yDaqUgJiXeRn1BOu7yd2EfF3k2RR8RhGCbR9vCmgU2I="
+        },
+        "value": { "denom": "usei", "amount": "10000000" }
+      }
+    ],
+    "memo": "762cf4f35aec09857df14ac2bc78824f8f89d5db@65.109.28.219:26656",
+    "timeout_height": "0",
+    "extension_options": [],
+    "non_critical_extension_options": []
+  },
+  "auth_info": {
+    "signer_infos": [
+      {
+        "public_key": {
+          "@type": "/cosmos.crypto.sr25519.PubKey",
+          "key": "rtFCALWkRJE9Dy/JSYz0I2MDToT392C58clNAVmtgR0="
+        },
+        "mode_info": { "single": { "mode": "SIGN_MODE_DIRECT" } },
+        "sequence": "0"
+      }
+    ],
+    "fee": { "amount": [], "gas_limit": "200000", "payer": "", "granter": "" }
+  },
+  "signatures": [
+    "vMwujEDMfTX+OB28A6M1X2QE5wAECPvZGCjaRjqkd2WY56VNdchnbk6ls94+u4XUi9lBaxYNg2HSoFheiJ4Vhw=="
+  ]
+}
