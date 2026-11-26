@@ -15,9 +15,9 @@
 **Recommended**
 * 16 GB RAM
 * 500 GB NVME SSD
-* 4.2 GHz x6 CPU 
+* 4.2 GHz x6 CPU
 
-## Operating System 
+## Operating System
 
 > Linux (x86_64) or Linux (amd64) Reccomended Arch Linux
 
@@ -26,11 +26,11 @@
 * Arch Linux: `pacman -S go`
 * Ubuntu: `sudo snap install go --classic`
 
-> Prerequisite: git. 
+> Prerequisite: git.
 * Arch Linux: `pacman -S git`
 * Ubuntu: `sudo apt-get install git`
 
-> Optional requirement: GNU make. 
+> Optional requirement: GNU make.
 * Arch Linux: `pacman -S make`
 * Ubuntu: `sudo apt-get install make`
 
@@ -60,8 +60,6 @@ mv $HOME/go/bin/seid /usr/bin/
 * Initialize node: `seid init <moniker> --chain-id sei-testnet-1`
 
 * Download the Genesis file: `https://github.com/sei-protocol/testnet/raw/main/sei-testnet-1/genesis.json -P $HOME/.sei/config/`
- 
-* Edit the minimum-gas-prices in ${HOME}/.sei/config/app.toml: `sed -i 's/minimum-gas-prices = ""/minimum-gas-prices = "0.01usei"/g' $HOME/.sei/config/app.toml`
 
 * Start seid by creating a systemd service to run the node in the background
 `nano /etc/systemd/system/seid.service`
@@ -87,8 +85,8 @@ LimitMEMLOCK=209715200
 WantedBy=multi-user.target
 ```
 ## Start the node
-* Reload the service files: `sudo systemctl daemon-reload` 
-* Create the symlinlk: `sudo systemctl enable seid.service` 
+* Reload the service files: `sudo systemctl daemon-reload`
+* Create the symlinlk: `sudo systemctl enable seid.service`
 * Start the node sudo: `systemctl start seid && journalctl -u seid -f`
 
 ### Create Validator Transaction

@@ -1,0 +1,16 @@
+{
+    "title": "Set Max Block Gas",
+    "description": "Set Max Block Gas",
+    "changes": [
+      {
+        "subspace": "baseapp",
+        "key": "BlockParams",
+        "value": {
+                "max_gas": "6000000",
+                "max_bytes": "22020096"
+        }
+      }
+    ],
+    "deposit": "10000000usei",
+    "is_expedited": true
+}
