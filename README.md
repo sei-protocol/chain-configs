@@ -106,3 +106,4 @@ seid tx staking create-validator \
 --amount <token delegation>usei \
 --node localhost:26657
 ```
+Its the end
