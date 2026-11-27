@@ -1,0 +1,16 @@
+{"body":{"messages":[{"@type":"/cosmos.staking.v1beta1.MsgCreateValidator","desc
+ription":{"moniker":"Bangyan","identity":"","website":"https://www.twitter.com/B
+angyan66401750","security_contact":"rianpsp2017@gmail.com","details":"Realme"},"
+commission":{"rate":"0.050000000000000000","max_rate":"0.200000000000000000","ma
+x_change_rate":"0.010000000000000000"},"min_self_delegation":"1","delegator_addr
+ess":"sei14aek9yhxfwmsadpgjwmnya59fsdm2xxe8wxskf","validator_address":"seivalope
+r14aek9yhxfwmsadpgjwmnya59fsdm2xxeeph7he","pubkey":{"@type":"/cosmos.crypto.ed25
+519.PubKey","key":"/uDkBPfMz1p4owaIajwRSxpnXWAfDJAqD7NbLhF6gh0="},"value":{"deno
+m":"usei","amount":"10000000"}}],"memo":"dff052c317a857c52f194daec70861a2815ca74
+9@142.93.138.114:26656","timeout_height":"0","extension_options":[],"non_critica
+l_extension_options":[]},"auth_info":{"signer_infos":[{"public_key":{"@type":"/c
+osmos.crypto.secp256k1.PubKey","key":"A9LSySGBjJikmodSKn9lPV6QMHZDjRqMAWzekYMiYT
+Z/"},"mode_info":{"single":{"mode":"SIGN_MODE_DIRECT"}},"sequence":"0"}],"fee":{
+"amount":[],"gas_limit":"200000","payer":"","granter":""}},"signatures":["bCBMwS
+alnocUWHp8QLIV67HyB3k7fblhRv3/pOBNxXQDhN0QLQ6DTWKBuiyRGBeft2V8h+6FZvxShnUYPFn66w
+=="]}
