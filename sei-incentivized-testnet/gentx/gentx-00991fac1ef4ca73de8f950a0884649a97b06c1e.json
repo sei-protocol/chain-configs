@@ -1,0 +1,54 @@
+{
+    "body": {
+        "messages": [
+            {
+                "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
+                "description": {
+                    "moniker": "EPool",
+                    "identity": "",
+                    "website": "",
+                    "security_contact": "",
+                    "details": ""
+                },
+                "commission": {
+                    "rate": "0.050000000000000000",
+                    "max_rate": "0.200000000000000000",
+                    "max_change_rate": "0.050000000000000000"
+                },
+                "min_self_delegation": "1",
+                "delegator_address": "sei1gnu0haccw3fk69c4j7wwfrp7wxmeyw4dlkafvf",
+                "validator_address": "seivaloper1gnu0haccw3fk69c4j7wwfrp7wxmeyw4dpev8de",
+                "pubkey": {
+                    "@type": "/cosmos.crypto.ed25519.PubKey",
+                    "key": "5pA//oS9LxndoDDdVDHuYNJIoYyMjuAJ+DLT/LUYyww="
+                },
+                "value": { "denom": "usei", "amount": "10000000" }
+            }
+        ],
+        "memo": "00991fac1ef4ca73de8f950a0884649a97b06c1e@10.128.0.3:26656",
+        "timeout_height": "0",
+        "extension_options": [],
+        "non_critical_extension_options": []
+    },
+    "auth_info": {
+        "signer_infos": [
+            {
+                "public_key": {
+                    "@type": "/cosmos.crypto.secp256k1.PubKey",
+                    "key": "AuWKeu9Y26D66iGCw379jnP3+7IJqj3f4Li0E9kWHJEW"
+                },
+                "mode_info": { "single": { "mode": "SIGN_MODE_DIRECT" } },
+                "sequence": "0"
+            }
+        ],
+        "fee": {
+            "amount": [],
+            "gas_limit": "200000",
+            "payer": "",
+            "granter": ""
+        }
+    },
+    "signatures": [
+        "LGMsw6NS0xvRf/Y4nK5leTh5ZuHnL2McrweKoT4Ipj97MTW8Jo7j/hutdghksx9nCgoXWm+h+R3biWYzYczrKw=="
+    ]
+}
