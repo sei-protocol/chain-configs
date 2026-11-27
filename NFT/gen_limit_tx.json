@@ -1,0 +1,52 @@
+{
+  "body": {
+    "messages": [
+      {
+        "@type": "/seiprotocol.seichain.dex.MsgPlaceOrders",
+        "creator": "YOUR_WALLET_ADDR",
+        "orders": [
+          {
+            "id": "0",
+            "status": "PLACED",
+            "account": "YOUR_WALLET_ADDR",
+            "contractAddr": "sei1466nf3zuxpya8q9emxukd7vftaf6h4psr0a07srl5zw74zh84yjqpeheyc",
+            "price": "11.520000000000000000",
+            "quantity": "1.500010000000000000",
+            "priceDenom": "UST2",
+            "assetDenom": "ATOM",
+            "orderType": "LIMIT",
+            "positionDirection": "LONG",
+            "data": "{\"position_effect\":\"Open\",\"leverage\":\"1\"}",
+            "statusDescription": ""
+          }
+        ],
+        "contractAddr": "sei1466nf3zuxpya8q9emxukd7vftaf6h4psr0a07srl5zw74zh84yjqpeheyc",
+        "funds": [
+          {
+            "denom": "ust2",
+            "amount": "115200"
+          }
+        ]
+      }      
+    ],
+    "memo": "limit",
+    "timeout_height": "0",
+    "extension_options": [],
+    "non_critical_extension_options": []
+  },
+  "auth_info": {
+    "signer_infos": [],
+    "fee": {
+      "amount": [
+        {
+          "denom": "usei",
+          "amount": "50"
+        }
+      ],
+      "gas_limit": "0",
+      "payer": "",
+      "granter": ""
+    }
+  },
+  "signatures": []
+}
