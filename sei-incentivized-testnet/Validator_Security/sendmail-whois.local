@@ -1,0 +1,47 @@
+# Fail2Ban configuration file
+#
+# Author: Cyril Jaquier
+#
+#
+
+[INCLUDES]
+
+before = sendmail-common.conf
+         mail-whois-common.conf
+
+[Definition]
+
+# bypass ban/unban for restored tickets
+norestored = 1
+
+# Option:  actionban
+# Notes.:  command executed when banning an IP. Take care that the
+#          command is executed with Fail2Ban user rights.
+# Tags:    See jail.conf(5) man page
+# Values:  CMD
+#
+actionban =   printf %%b "Subject:🕵️ [Fail2Ban] <name>: BANNED IP <ip>! 🔨
+              Date: `LC_ALL=C date +"%%a, %%d %%h %%Y %%T %%z"`
+              From: <sendername> <<sender>>
+              To: <destination>\n
+              Hi,\n
+              The jail <name> has banned ip <ip> after <failures> attempts against <name>.\n
+              Here is some info about the IP: https://db-ip.com/<ip> \n
+              Lines containing IP <ip>: \n
+              `grep '<ip>' <logpath>` \n
+              Regards,\n
+              Fail2Ban" | /usr/sbin/sendmail -t -v 'exec openssl s_client -quiet -tls1 -connect smtp.gmail.com:465' -au<from> -ap<password> <destination>
+
+actionunban = printf %%b "Subject:🔔 [Fail2Ban] <name>: UNBANNED IP <ip> ✅
+              Date: `LC_ALL=C date +"%%a, %%d %%h %%Y %%T %%z"`
+              From: <sendername> <<sender>>
+              To: <destination>\n
+              Hi,\n
+              Fail2ban has unbanned ip https://db-ip.com/<ip> successfully. \n
+              Regards,\n
+              Fail2Ban" | /usr/sbin/sendmail -t -v 'exec openssl s_client -quiet -tls1 -connect smtp.gmail.com:465' -au<from> -ap<password> <destination>
+[Init]
+
+# Default name of the chain
+#
+name = default

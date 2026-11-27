@@ -1,0 +1,18 @@
+[DEFAULT]
+ bantime = 600 # Set 60s for blocked time to blocked IP
+# Ignore localhost and you IP, replaced xxx by your IP]
+ ignoreip = 127.0.0.1/8 xxx.xxx.xxx.xxx
+ ignoreself = true
+ banaction = iptables-allports
+ action = %(action_mw)s[from=sender@gmail.com, password=YOUR_PWD, destination=receiver@gmail.com, sendername=Fail2Ban]
+
+[sshd]
+enabled = true
+# newly customized ssh port was created in previous steps
+# port =
+filter = sshd
+# banaction = iptables-allports
+# action = %(action_mw)s[from=sender@gmail.com, password=YOUR_PWD, destination=receiver@gmail.com, sendername=Fail2Ban]
+# sendmail-whois
+logpath = /var/log/auth.log
+maxretry = 3
