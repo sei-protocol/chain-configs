@@ -1,0 +1,9 @@
+{"body":{"messages":[{"@type":"/seid gentx allgorithm 10000000usei \
+--chain-id  atlantic-1\
+--moniker=allgorithm \
+--commission-max-change-rate=0.01 \
+--commission-max-rate=0.20 \
+--commission-rate=0.05 \
+--details="allgorithms validator" \
+--security-contact="berkercan38@gmail.com" \
+--website="https://forum.rues.info/index.php" \}]}}
